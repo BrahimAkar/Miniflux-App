@@ -1,5 +1,5 @@
 # Miniflux App
-A mobile app built with Flutter and using the BLoC pattern and Clean Architecture to provide a clean, reliable, and efficient RSS reading experience for Miniflux users.
+A flutter app designed to provide a seamless and efficient RSS reading experience for miniflux users. Built with the Bloc pattern and Clean Architecture, the app offers a reliable and maintainable codebase, making it easier to test, debug, and scale.
 
 > Please note that this app is not affiliated with or endorsed by the official Miniflux project.
 
