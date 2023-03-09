@@ -36,10 +36,10 @@ A mobile app built with Flutter and using the BLoC pattern and Clean Architectur
 
 
 
-Contribution
+# Contribution
 Contributions to the app are always welcome! You can contribute by opening issues, submitting pull requests, or suggesting new features. Please read the CONTRIBUTING.md file for more information.
 
-License
+# License
 This app is licensed under the MIT License. See the LICENSE file for more details.
 
 
