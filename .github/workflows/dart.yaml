@@ -57,9 +57,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-flutter-
       - name: Install Flutter
-        uses: actions/setup-node@v2
+        uses: subosito/flutter-action@v2
         with:
-          node-version: "16.x"
+          channel: "stable"
       - name: Set up Flutter
         run: flutter doctor
       - name: Build Android
