@@ -5,6 +5,7 @@ A mobile app built with Flutter and using the BLoC pattern and Clean Architectur
 
 
 # Roadmap:
+Upcoming features and improvements for the Miniflux RSS Reader app
 ##### [ ]: Not Started
 ##### [·]: In Progess
 ##### [x]: Completed
