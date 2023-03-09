@@ -9,6 +9,7 @@ Upcoming features and improvements for the Miniflux RSS Reader app.
 ##### [ ]: Not Started
 ##### [·]: In Progess
 ##### [x]: Completed
+##### [?]: Not Sure About Implementing It
 
 
 |  Features |  Current Status  |
@@ -22,19 +23,19 @@ Upcoming features and improvements for the Miniflux RSS Reader app.
 |   Add pull-to-refresh functionality for feeds and articles    | [ ]  |
 |   Implement caching of articles for offline reading    | [ ]  |
 |   Add dark mode support for app    | [ ]  |
-|   Implement notifications for new articles    | [ ]  |
-|   Add article sorting options by date or title     | [ ]  |
-|   Add support for multiple Miniflux accounts     | [ ]  |
+|   Implement notifications for new articles    | [?]  |
+|   Add article sorting options     | [ ]  |
+|   Add support for multiple Miniflux accounts     | [?]  |
 |   Implement share extension for sharing articles to other apps     |  [ ] |
 |   Implement support for localization in multiple languages     | [ ]  |
 |   Implement support for exporting/importing user data     |  [ ] |
-|   Implement feed recommendation engine based on user preferences    |  [ ] |
+|   Implement feed recommendation engine based on user preferences    |  [?] |
 |   Allow user to customize app themes and colors     |  [ ] |
 |   Improve accessibility for users with disabilities     | [ ]  |
 |   Implement support for bookmaring and archiving articles  | [ ]  |
 |   Implement article summarization AI for quicker reading   | [ ]  |
-|   Implement user activity tracking and statistics   | [ ]  |
-|   Implement support for voice commands and text-to-speech reading   | [ ]  |
+|   Implement user activity tracking and statistics   | [?]  |
+|   Implement support for text-to-speech reading   | [ ]  |
 
 
 
