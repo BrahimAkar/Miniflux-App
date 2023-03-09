@@ -5,7 +5,7 @@ A flutter app designed to provide a seamless and efficient RSS reading experienc
 
 
 # Roadmap:
-Upcoming features and improvements for the Miniflux RSS Reader app.
+Upcoming features and improvements:
 ##### [ ]: Not Started
 ##### [·]: In Progess
 ##### [x]: Completed
