@@ -1,0 +1,54 @@
+name: Run Dart tests on push and pull request
+
+on:
+  push:
+    branches: ["master"]
+  pull_request:
+    branches: ["master"]
+
+jobs:
+  Analyze_And_Test:
+    name: Test and analyze flutter code
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code from GitHub
+        uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: "stable"
+      - name: Run format, Analyze, Test
+        run: |
+          flutter format --set-exit-if-changed .
+          flutter analyze --fatal-warnings
+          flutter test --coverage
+  Build_Android:
+    name: Build android apk and aab
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    needs: [Analyze_And_Test]
+    steps:
+      - name: Checkout code from GitHub
+        uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: "stable"
+      - name: Build Android
+        run: |
+          flutter build apk --release
+          flutter build appbundle --release
+  Build_iOS:
+    name: Build iOS ipa
+    runs-on: macos-latest
+    needs: [Analyze_And_Test]
+    steps:
+      - name: Checkout code from GitHub
+        uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: "stable"
+      - name: Build iOS
+        run: |
+          flutter build ios --release --no-codesign
+          flutter build ipa --release --no-codesign
