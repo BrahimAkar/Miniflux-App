@@ -33,6 +33,7 @@ A mobile app built with Flutter and using the BLoC pattern and Clean Architectur
 |   Implement support for bookmaring and archiving articles  | [ ]  |
 |   Implement article summarization AI for quicker reading   | [ ]  |
 |   Implement user activity tracking and statistics   | [ ]  |
+|   Implement support for voice commands and text-to-speech reading   | [ ]  |
 
 
 
