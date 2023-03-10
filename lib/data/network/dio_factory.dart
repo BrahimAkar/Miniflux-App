@@ -9,6 +9,7 @@ const String authorization = "authorization";
 const String defaultLanguage = "language";
 
 class DioFactory {
+  DioFactory();
   Future<Dio> getDio() async {
     Dio dio = Dio();
 

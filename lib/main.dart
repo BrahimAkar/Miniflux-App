@@ -3,17 +3,14 @@ import 'package:miniflux_app/domain/usecases/about_me_usecase.dart';
 
 import 'app/di.dart';
 
-void main() {
-  runApp(MyApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await initDependencies();
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({super.key});
-  final AboutMeUseCase aboutMeUseCase = instance<AboutMeUseCase>();
-
-  Future<void> getData() async {
-    await aboutMeUseCase.execute(null);
-  }
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -38,6 +35,22 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  final AboutMeUseCase aboutMeUseCase = instance<AboutMeUseCase>();
+
+  Future<void> getData() async {
+    (await aboutMeUseCase.execute(null)).fold(
+        (failure) => {
+              print("${failure.message} ${failure.code}"),
+            }, (data) {
+      print(data);
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getData();
+  }
 
   void _incrementCounter() {
     setState(() {
