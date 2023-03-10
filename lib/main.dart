@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:miniflux_app/domain/usecases/about_me_usecase.dart';
+
+import 'app/di.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
+  final AboutMeUseCase aboutMeUseCase = instance<AboutMeUseCase>();
+
+  Future<void> getData() async {
+    await aboutMeUseCase.execute(null);
+  }
 
   @override
   Widget build(BuildContext context) {
