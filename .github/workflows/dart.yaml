@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [master]
 
+# Global environment variables
+env:
+  GITHUB_TOKEN: ${{ secrets.MINIFLUX_KEY }}
+
 jobs:
   build_and_test:
     name: Build and test

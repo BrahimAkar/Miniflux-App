@@ -45,4 +45,5 @@ app.*.map.json
 
 
 # Default env file
-prod.env
+.env
+lib/env/env.g.dart
