@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:miniflux_app/app/constants.dart';
+import 'package:miniflux_app/utils/constants/numbers.dart';
+import 'package:miniflux_app/utils/constants/strings.dart';
 
 const String applicationJson = "application/json";
 const String contentType = "content-type";
@@ -14,13 +15,13 @@ class DioFactory {
     Map<String, String> headers = {
       contentType: applicationJson,
       accept: applicationJson,
-      authorization: Constants.token,
+      authorization: ConstStrings.token,
     };
     dio.options = BaseOptions(
-      baseUrl: Constants.baseUrl,
+      baseUrl: ConstStrings.baseUrl,
       headers: headers,
-      receiveTimeout: const Duration(milliseconds: Constants.apiTimeOut),
-      sendTimeout: const Duration(milliseconds: Constants.apiTimeOut),
+      receiveTimeout: const Duration(milliseconds: ConstsNumbers.apiTimeOut),
+      sendTimeout: const Duration(milliseconds: ConstsNumbers.apiTimeOut),
     );
 
     return dio;

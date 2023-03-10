@@ -1,5 +1,6 @@
-class Constants {
+class ConstsStrings {
   static const String baseUrl = "https://miniflux.brahim.dev";
   static const String token = "TOKEN";
-  static const int apiTimeOut = 30000;
+// App
+  static const String appTitle = 'MiniFlux App';
 }
