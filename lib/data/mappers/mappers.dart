@@ -6,10 +6,10 @@ import 'package:miniflux_app/utils/constants/strings.dart';
 extension MeResponseMapper on MeResponse {
   MeModel toDomain() {
     return MeModel(
-      username: username ?? ConstsStrings.emptyString,
-      language: language ?? ConstsStrings.emptyString,
-      entrySortingDirection: entrySortingDirection ?? ConstsStrings.emptyString,
-      entrySortingOrder: entrySortingOrder ?? ConstsStrings.emptyString,
+      username: username ?? ConstStrings.emptyString,
+      language: language ?? ConstStrings.emptyString,
+      entrySortingDirection: entrySortingDirection ?? ConstStrings.emptyString,
+      entrySortingOrder: entrySortingOrder ?? ConstStrings.emptyString,
       entriesPerPage: entriesPerPage ?? ConstsNumbers.zero,
       showReadingTime: showReadingTime ?? false,
     );
