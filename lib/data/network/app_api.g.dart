@@ -34,7 +34,7 @@ class _AppServiceClient implements AppServiceClient {
     )
             .compose(
               _dio.options,
-              '/home',
+              '/me',
               queryParameters: queryParameters,
               data: _data,
             )

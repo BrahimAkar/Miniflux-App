@@ -45,4 +45,4 @@ app.*.map.json
 
 
 # Default env file
-.env
+prod.env

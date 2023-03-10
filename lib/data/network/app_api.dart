@@ -9,6 +9,6 @@ part 'app_api.g.dart';
 abstract class AppServiceClient {
   factory AppServiceClient(Dio dio, {String baseUrl}) = _AppServiceClient;
 
-  @GET("/home")
+  @GET("/me")
   Future<MeResponse> getMe();
 }
