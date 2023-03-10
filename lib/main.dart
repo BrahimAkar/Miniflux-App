@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:miniflux_app/app/router/app_router.dart';
 import 'package:miniflux_app/domain/usecases/about_me_usecase.dart';
+import 'package:miniflux_app/presentation/cubits/remote_user/about_me_cubit.dart';
+import 'package:miniflux_app/utils/constants/strings.dart';
 
 import 'app/di.dart';
 
@@ -14,12 +18,21 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'MiniFlux App',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => AboutMeCubit(
+            instance<AboutMeUseCase>(),
+          )..getAboutMe(),
+        ),
+      ],
+      child: MaterialApp.router(
+        debugShowCheckedModeBanner: false,
+        routerDelegate: appRouter.delegate(),
+        routeInformationParser: appRouter.defaultRouteParser(),
+        title: ConstStrings.appTitle,
+        // theme: AppTheme.light,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }

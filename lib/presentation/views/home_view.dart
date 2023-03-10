@@ -12,15 +12,40 @@ class HomeView extends HookWidget {
   Widget build(BuildContext context) {
     final remoteArticlesCubit = BlocProvider.of<AboutMeCubit>(context);
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Home'),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          remoteArticlesCubit.getAboutMe();
+        },
+        child: const Icon(Icons.refresh),
+      ),
       body: BlocBuilder<AboutMeCubit, AboutMeState>(
         builder: (_, state) {
           switch (state.runtimeType) {
             case AboutMeLoading:
               return const Center(child: CupertinoActivityIndicator());
             case AboutMeFailed:
-              return const Center(child: Icon(Icons.refresh));
+              return Center(
+                  child: IconButton(
+                icon: const Icon(Icons.refresh),
+                onPressed: () {
+                  remoteArticlesCubit.getAboutMe();
+                },
+              ));
             case AboutMeSuccess:
-              return Text(state.me!.username);
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(state.me!.username),
+                  Text(state.me!.language),
+                  Text(state.me!.entriesPerPage.toString()),
+                  Text(state.me!.showReadingTime.toString()),
+                  Text(state.me!.entrySortingOrder),
+                ],
+              );
             default:
               return const SizedBox();
           }
