@@ -19,18 +19,7 @@ class RepositoryImplementation implements Repository {
       // its connected to internet, its safe to call API
       try {
         final response = await _remoteDataSource.me();
-
-        // if (response.status == ApiInternalStatus.SUCCESS) {
-        // success
-        // return either right
-        // return data
         return Right(response.toDomain());
-        // } else {
-        //   // failure --return business error
-        //   // return either left
-        //   return Left(Failure(ApiInternalStatus.FAILURE,
-        //       response.message ?? ResponseMessage.DEFAULT));
-        // }
       } catch (error) {
         return Left(ErrorHandler.handle(error).failure);
       }
