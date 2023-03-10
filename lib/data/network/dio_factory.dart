@@ -1,11 +1,14 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
+import 'package:miniflux_app/env/env.dart';
 import 'package:miniflux_app/utils/constants/numbers.dart';
 import 'package:miniflux_app/utils/constants/strings.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 const String applicationJson = "application/json";
 const String contentType = "content-type";
 const String accept = "accept";
-const String authorization = "authorization";
+const String authorization = "X-Auth-Token";
 const String defaultLanguage = "language";
 
 class DioFactory {
@@ -16,7 +19,7 @@ class DioFactory {
     Map<String, String> headers = {
       contentType: applicationJson,
       accept: applicationJson,
-      authorization: ConstStrings.token,
+      authorization: Env.MINIFLUX_KEY
     };
     dio.options = BaseOptions(
       baseUrl: ConstStrings.baseUrl,
@@ -24,7 +27,14 @@ class DioFactory {
       receiveTimeout: const Duration(milliseconds: ConstsNumbers.apiTimeOut),
       sendTimeout: const Duration(milliseconds: ConstsNumbers.apiTimeOut),
     );
-
+    if (!kReleaseMode) {
+      // its debug mode so print app logs
+      dio.interceptors.add(PrettyDioLogger(
+        requestHeader: true,
+        requestBody: true,
+        responseHeader: true,
+      ));
+    }
     return dio;
   }
 }

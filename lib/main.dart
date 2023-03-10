@@ -34,28 +34,16 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
   final AboutMeUseCase aboutMeUseCase = instance<AboutMeUseCase>();
 
   Future<void> getData() async {
-    (await aboutMeUseCase.execute(null)).fold(
-        (failure) => {
-              print("${failure.message} ${failure.code}"),
-            }, (data) {
-      print(data);
-    });
+    (await aboutMeUseCase.execute(null)).fold((failure) => {}, (data) {});
   }
 
   @override
   void initState() {
     super.initState();
     getData();
-  }
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
   }
 
   @override
@@ -67,19 +55,15 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
+          children: const <Widget>[
             Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+              'You have pushed the button this many times:',
             ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: getData,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),
