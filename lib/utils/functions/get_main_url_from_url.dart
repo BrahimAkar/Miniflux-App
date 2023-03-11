@@ -4,8 +4,6 @@ String getMainUrl(String url) {
   var host = uri.host;
   var port = uri.port;
   var mainUrl = '$scheme://$host';
-  if (port != 80 && port != 443 && port != -1) {
-    mainUrl += ':$port';
-  }
+
   return mainUrl;
 }

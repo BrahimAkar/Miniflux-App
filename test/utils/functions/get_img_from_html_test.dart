@@ -1,4 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:miniflux_app/utils/constants/strings.dart';
 import 'package:miniflux_app/utils/functions/get_img_from_html.dart';
 
 void main() {
@@ -31,7 +32,7 @@ void main() {
 
     expect(
       imageUrl,
-      equals('https://example.com/default-image.jpg'),
+      equals(ConstStrings.defaultNetworkImage),
     );
   });
 }
