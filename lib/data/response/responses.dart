@@ -1,4 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+// ignore_for_file: public_member_api_docs, sort_constructors_first, non_constant_identifier_names
 // ignore_for_file: depend_on_referenced_packages
 
 import 'package:json_annotation/json_annotation.dart';
@@ -138,10 +138,10 @@ class CategoryResponse {
 @JsonSerializable()
 class IconResponse {
   @JsonKey(name: 'icon_id')
-  int? icon_id;
+  final int icon_id;
 
   IconResponse({
-    this.icon_id,
+    required this.icon_id,
   });
   // from json
   factory IconResponse.fromJson(Map<String, dynamic> json) =>

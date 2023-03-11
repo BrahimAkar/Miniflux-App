@@ -68,6 +68,6 @@ extension EntriesResponseMapper on EntriesResponse {
 
 extension IconResponseMapper on IconResponse {
   IconModel toDomain() {
-    return IconModel(iconID: icon_id ?? ConstsNumbers.zero);
+    return IconModel(iconID: icon_id);
   }
 }
