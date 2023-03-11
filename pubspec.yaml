@@ -54,6 +54,8 @@ dependencies:
   cached_network_image: ^3.2.3
   google_fonts: ^4.0.3
   simple_moment: ^1.1.1
+  flex_color_scheme: ^6.1.2
+  fluentui_system_icons: ^1.1.177
 
 dev_dependencies:
   flutter_test:

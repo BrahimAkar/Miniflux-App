@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:miniflux_app/presentation/views/user_feed/cubit/user_feed_cubit.dart';
-import 'package:miniflux_app/presentation/views/user_feed/views/user_feed.dart';
-import 'package:miniflux_app/utils/constants/strings.dart';
+import 'package:miniflux_app/presentation/pages/user_feed/cubit/user_feed_cubit.dart';
+import 'package:miniflux_app/presentation/pages/user_feed/views/user_feed.dart';
 
 class MainHomePage extends StatefulWidget {
   const MainHomePage({super.key});
@@ -27,9 +26,12 @@ class _MainHomePageState extends State<MainHomePage>
         onPressed: () {
           context.read<UserFeedCubit>().getUserFeed();
         },
-        child: const Icon(Icons.refresh),
+        child: const Icon(
+          Icons.refresh,
+          // color: Theme.of(context).iconTheme.color,
+        ),
       ),
-      backgroundColor: Theme.of(context).cardTheme.shadowColor,
+      // backgroundColor: Theme.of(context).cardTheme.shadowColor,
       // onDrawerChanged: (bool isOpen) {},
       // drawer: const HomeDrawer(),
       // appBar:
@@ -38,13 +40,13 @@ class _MainHomePageState extends State<MainHomePage>
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return <Widget>[
             SliverAppBar(
-              title: const Text(
-                ConstStrings.appTitle,
-              ),
+              // title: const Text(
+              //   ConstStrings.appTitle,
+              // ),
               pinned: true,
               floating: true,
               snap: true,
-              bottom: PreferredSize(
+              title: PreferredSize(
                 preferredSize: const Size.fromHeight(51),
                 child: SizedBox(
                   // width: MediaQuery.of(context).size.width,
@@ -58,7 +60,8 @@ class _MainHomePageState extends State<MainHomePage>
                       physics: const BouncingScrollPhysics(),
                       indicator: UnderlineTabIndicator(
                         borderSide: BorderSide(
-                          color: Theme.of(context).tabBarTheme.indicatorColor!,
+                          color: Theme.of(context).tabBarTheme.indicatorColor ??
+                              Colors.white,
                           width: 4,
                         ),
                       ),

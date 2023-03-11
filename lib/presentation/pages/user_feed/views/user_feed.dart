@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:miniflux_app/presentation/views/user_feed/cubit/user_feed_cubit.dart';
-import 'package:miniflux_app/presentation/views/user_feed/views/widgets/single_entry.dart';
+import 'package:miniflux_app/presentation/pages/user_feed/cubit/user_feed_cubit.dart';
+import 'package:miniflux_app/presentation/pages/user_feed/views/widgets/single_entry.dart';
 import 'package:miniflux_app/utils/constants/strings.dart';
 
 class UserFeed extends HookWidget {
@@ -15,14 +15,11 @@ class UserFeed extends HookWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
-          padding: const EdgeInsets.all(16),
-          child: Text(
-            'Latest News',
-            style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                  color: Theme.of(context).textTheme.labelSmall!.color,
-                ),
-          ),
-        ),
+            padding: const EdgeInsets.all(16),
+            child: Text(
+              'Latest News',
+              style: Theme.of(context).textTheme.labelLarge,
+            )),
         Expanded(
           child: BlocBuilder<UserFeedCubit, UserFeedState>(
             builder: (_, state) {
@@ -34,12 +31,18 @@ class UserFeed extends HookWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       IconButton(
-                        icon: const Icon(Icons.refresh),
+                        icon: const Icon(
+                          Icons.refresh,
+                          color: Colors.white,
+                        ),
                         onPressed: () {
                           context.read<UserFeedCubit>().getUserFeed();
                         },
                       ),
-                      Text(state.failure?.message ?? ConstStrings.emptyString),
+                      Text(
+                        state.failure?.message ?? ConstStrings.emptyString,
+                        style: Theme.of(context).textTheme.labelSmall,
+                      ),
                     ],
                   );
                 case UserFeedSuccess:

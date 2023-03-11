@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:miniflux_app/app/router/app_router.dart';
 import 'package:miniflux_app/domain/usecases/entries_feed_usecase.dart';
 import 'package:miniflux_app/presentation/themes/themes.dart';
-import 'package:miniflux_app/presentation/views/user_feed/cubit/user_feed_cubit.dart';
+import 'package:miniflux_app/presentation/pages/user_feed/cubit/user_feed_cubit.dart';
 import 'package:miniflux_app/utils/constants/strings.dart';
 
 import 'app/di.dart';
