@@ -40,7 +40,7 @@ Map<String, dynamic> _$EntriesResponseToJson(EntriesResponse instance) =>
 
 EntryResponse _$EntryResponseFromJson(Map<String, dynamic> json) =>
     EntryResponse(
-      id: json['id'] as String?,
+      id: json['id'] as int?,
       status: json['status'] as String?,
       title: json['title'] as String?,
       url: json['url'] as String?,

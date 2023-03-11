@@ -31,19 +31,19 @@ class RepositoryImplementation implements Repository {
   }
 
   @override
-  Future<Either<Failure, EntriesFeed>> entriesFeed() async {
-    // if (await networkInfo.isConnected) {
-    //   // its connected to internet, its safe to call API
-    //   try {
-    //     final response = await _remoteDataSource.me();
-    //     return Right(response.toDomain());
-    //   } catch (error) {
-    //     return Left(ErrorHandler.handle(error).failure);
-    //   }
-    // } else {
-    //   // return internet connection error
-    //   // return either left
-    //   return Left(DataSource.NO_INTERNET_CONNECTION.getFailure());
-    // }
+  Future<Either<Failure, EntriesFeed>> getEntriesFeed() async {
+    if (await networkInfo.isConnected) {
+      // its connected to internet, its safe to call API
+      try {
+        final response = await _remoteDataSource.getEntries();
+        return Right(response.toDomain());
+      } catch (error) {
+        return Left(ErrorHandler.handle(error).failure);
+      }
+    } else {
+      // return internet connection error
+      // return either left
+      return Left(DataSource.NO_INTERNET_CONNECTION.getFailure());
+    }
   }
 }

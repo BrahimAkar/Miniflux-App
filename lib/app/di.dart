@@ -8,6 +8,7 @@ import 'package:miniflux_app/data/network/network_info.dart';
 import 'package:miniflux_app/data/repositories/repository_impl.dart';
 import 'package:miniflux_app/domain/repositories/repository.dart';
 import 'package:miniflux_app/domain/usecases/about_me_usecase.dart';
+import 'package:miniflux_app/domain/usecases/entries_feed_usecase.dart';
 
 final instance = GetIt.instance;
 
@@ -27,5 +28,8 @@ Future<void> initDependencies() async {
   // repository
   instance.registerLazySingleton<Repository>(
       () => RepositoryImplementation(instance(), instance()));
+  // AboutMeUseCase
   instance.registerFactory<AboutMeUseCase>(() => AboutMeUseCase(instance()));
+  // UserFeedUseCase
+  instance.registerFactory<UserFeedUseCase>(() => UserFeedUseCase(instance()));
 }

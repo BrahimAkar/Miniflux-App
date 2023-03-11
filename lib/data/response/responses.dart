@@ -51,7 +51,7 @@ class EntriesResponse {
 @JsonSerializable()
 class EntryResponse {
   @JsonKey(name: 'id')
-  String? id;
+  int? id;
   @JsonKey(name: 'status')
   String? status;
   @JsonKey(name: 'title')

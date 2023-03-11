@@ -3,6 +3,7 @@ import 'package:miniflux_app/data/response/responses.dart';
 
 abstract class RemoteDataSource {
   Future<MeResponse> me();
+  Future<EntriesResponse> getEntries();
 }
 
 class RemoteDataSourceImpl implements RemoteDataSource {
@@ -11,5 +12,10 @@ class RemoteDataSourceImpl implements RemoteDataSource {
   @override
   Future<MeResponse> me() {
     return _appServiceClient.getMe();
+  }
+
+  @override
+  Future<EntriesResponse> getEntries() {
+    return _appServiceClient.getEntries();
   }
 }

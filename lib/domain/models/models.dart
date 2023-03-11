@@ -16,26 +16,26 @@ class MeModel {
   });
 }
 
-class Category {
+class CategoryModel {
   int id;
   String title;
-  Category({
+  CategoryModel({
     required this.id,
     required this.title,
   });
 }
 
-class Feed {
+class FeedModel {
   int id;
   String title;
-  Feed({
+  FeedModel({
     required this.id,
     required this.title,
   });
 }
 
-class Entry {
-  String id;
+class EntryModel {
+  int id;
   String status;
   String title;
   String url;
@@ -45,7 +45,7 @@ class Entry {
   String author;
   bool starred;
   int readingTime;
-  Entry({
+  EntryModel({
     required this.id,
     required this.status,
     required this.title,
@@ -61,7 +61,7 @@ class Entry {
 
 class EntriesFeed {
   int total;
-  List<Entry> entries;
+  List<EntryModel> entries;
   EntriesFeed({
     required this.total,
     required this.entries,

@@ -11,6 +11,6 @@ abstract class AppServiceClient {
 
   @GET("/me")
   Future<MeResponse> getMe();
-  // @GET("/entries")
-  // Future<EntriesResponse> getEntries();
+  @GET("/entries")
+  Future<EntriesResponse> getEntries();
 }
