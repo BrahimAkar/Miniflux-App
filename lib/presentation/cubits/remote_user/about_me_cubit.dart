@@ -6,7 +6,7 @@ import 'package:miniflux_app/presentation/cubits/remote_user/about_me_state.dart
 class AboutMeCubit extends BaseCubit<AboutMeState, MeModel> {
   final AboutMeUseCase _aboutMeUseCase;
   AboutMeCubit(this._aboutMeUseCase) : super(const AboutMeLoading(), null);
-  final int _page = 1;
+  // final int _page = 1;
 
   Future<void> getAboutMe() async {
     if (isBusy) return;
