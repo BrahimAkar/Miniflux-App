@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:miniflux_app/app/router/app_router.dart';
-import 'package:miniflux_app/domain/usecases/about_me_usecase.dart';
 import 'package:miniflux_app/domain/usecases/entries_feed_usecase.dart';
+import 'package:miniflux_app/presentation/themes/themes.dart';
 import 'package:miniflux_app/presentation/views/user_feed/cubit/user_feed_cubit.dart';
 import 'package:miniflux_app/utils/constants/strings.dart';
 
@@ -32,54 +32,10 @@ class MyApp extends StatelessWidget {
         routerDelegate: appRouter.delegate(),
         routeInformationParser: appRouter.defaultRouteParser(),
         title: ConstStrings.appTitle,
+        theme: AppThemes.darkTheme,
+        darkTheme: AppThemes.darkTheme,
+        themeMode: ThemeMode.dark,
         // theme: AppTheme.light,
-      ),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  final AboutMeUseCase aboutMeUseCase = instance<AboutMeUseCase>();
-
-  Future<void> getData() async {
-    (await aboutMeUseCase.execute(null)).fold((failure) => {}, (data) {});
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    getData();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: getData,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
       ),
     );
   }

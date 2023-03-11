@@ -22,15 +22,25 @@ class _$AppRouter extends RootStackRouter {
         routeData: routeData,
         child: const UserFeed(),
       );
-    }
+    },
+    MainHomePageRoute.name: (routeData) {
+      return AdaptivePage<dynamic>(
+        routeData: routeData,
+        child: const MainHomePage(),
+      );
+    },
   };
 
   @override
   List<RouteConfig> get routes => [
         RouteConfig(
           UserFeedRoute.name,
+          path: '/user-feed',
+        ),
+        RouteConfig(
+          MainHomePageRoute.name,
           path: '/',
-        )
+        ),
       ];
 }
 
@@ -40,8 +50,20 @@ class UserFeedRoute extends PageRouteInfo<void> {
   const UserFeedRoute()
       : super(
           UserFeedRoute.name,
-          path: '/',
+          path: '/user-feed',
         );
 
   static const String name = 'UserFeedRoute';
+}
+
+/// generated route for
+/// [MainHomePage]
+class MainHomePageRoute extends PageRouteInfo<void> {
+  const MainHomePageRoute()
+      : super(
+          MainHomePageRoute.name,
+          path: '/',
+        );
+
+  static const String name = 'MainHomePageRoute';
 }

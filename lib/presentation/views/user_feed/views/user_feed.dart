@@ -11,57 +11,66 @@ class UserFeed extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          ConstStrings.appTitle,
-          style: TextStyle(color: Colors.black),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          padding: const EdgeInsets.all(16),
+          child: Text(
+            'Latest News',
+            style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                  color: Theme.of(context).textTheme.labelSmall!.color,
+                ),
+          ),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          context.read<UserFeedCubit>().getUserFeed();
-        },
-        child: const Icon(Icons.refresh),
-      ),
-      body: BlocBuilder<UserFeedCubit, UserFeedState>(
-        builder: (_, state) {
-          switch (state.runtimeType) {
-            case UserFeedLoading:
-              return const Center(child: CupertinoActivityIndicator());
-            case UserFeedFailed:
-              return Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  IconButton(
-                    icon: const Icon(Icons.refresh),
-                    onPressed: () {
-                      context.read<UserFeedCubit>().getUserFeed();
-                    },
-                  ),
-                  Text(state.failure?.message ?? ConstStrings.emptyString),
-                ],
-              );
-            case UserFeedSuccess:
-              return CustomScrollView(
-                // controller: scrollController,
-                slivers: [
-                  SliverList(
-                    delegate: SliverChildBuilderDelegate(
-                      (context, index) => SingleEntry(
-                        entry: state.feed!.entries[index],
-                        index: index,
+        Expanded(
+          child: BlocBuilder<UserFeedCubit, UserFeedState>(
+            builder: (_, state) {
+              switch (state.runtimeType) {
+                case UserFeedLoading:
+                  return const Center(child: CupertinoActivityIndicator());
+                case UserFeedFailed:
+                  return Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      IconButton(
+                        icon: const Icon(Icons.refresh),
+                        onPressed: () {
+                          context.read<UserFeedCubit>().getUserFeed();
+                        },
                       ),
-                      childCount: state.feed?.entries.length,
-                    ),
-                  ),
-                ],
-              );
-            default:
-              return const SizedBox();
-          }
-        },
-      ),
+                      Text(state.failure?.message ?? ConstStrings.emptyString),
+                    ],
+                  );
+                case UserFeedSuccess:
+                  return CustomScrollView(
+                    // controller: scrollController,
+                    slivers: [
+                      SliverList(
+                        delegate: SliverChildBuilderDelegate(
+                          (context, index) => Column(
+                            children: [
+                              SingleEntry(
+                                entry: state.feed!.entries[index],
+                                index: index,
+                              ),
+                              // This divider will not appears on last index
+                              if (index != (state.feed!.entries.length - 1))
+                                const Divider(),
+                            ],
+                          ),
+                          childCount: state.feed?.entries.length,
+                        ),
+                      ),
+                    ],
+                  );
+                default:
+                  return const SizedBox();
+              }
+            },
+          ),
+        ),
+      ],
     );
   }
 }
