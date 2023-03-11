@@ -22,7 +22,7 @@ class DioFactory {
       authorization: Env.MINIFLUX_KEY
     };
     dio.options = BaseOptions(
-      baseUrl: ConstStrings.baseUrl,
+      baseUrl: ConstStrings.baseUrlApi,
       headers: headers,
       receiveTimeout: const Duration(milliseconds: ConstsNumbers.apiTimeOut),
       sendTimeout: const Duration(milliseconds: ConstsNumbers.apiTimeOut),

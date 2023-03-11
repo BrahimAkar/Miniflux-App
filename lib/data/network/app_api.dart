@@ -5,12 +5,12 @@ import 'package:retrofit/retrofit.dart';
 
 part 'app_api.g.dart';
 
-@RestApi(baseUrl: ConstStrings.baseUrl)
+@RestApi(baseUrl: ConstStrings.baseUrlApi)
 abstract class AppServiceClient {
   factory AppServiceClient(Dio dio, {String baseUrl}) = _AppServiceClient;
 
   @GET("/me")
   Future<MeResponse> getMe();
-  @GET("/entries")
+  @GET("/entries?direction=desc")
   Future<EntriesResponse> getEntries();
 }

@@ -51,6 +51,9 @@ dependencies:
   rxdart: ^0.27.3
   flutter_dotenv: ^5.0.2
   envied: ^0.3.0
+  cached_network_image: ^3.2.3
+  google_fonts: ^4.0.3
+  simple_moment: ^1.1.1
 
 dev_dependencies:
   flutter_test:

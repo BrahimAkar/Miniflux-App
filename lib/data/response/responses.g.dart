@@ -76,12 +76,14 @@ FeedResponse _$FeedResponseFromJson(Map<String, dynamic> json) => FeedResponse(
       category: json['category'] == null
           ? null
           : CategoryResponse.fromJson(json['category'] as Map<String, dynamic>),
+      icon: IconResponse.fromJson(json['icon'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$FeedResponseToJson(FeedResponse instance) =>
     <String, dynamic>{
       'id': instance.id,
       'title': instance.title,
+      'icon': instance.icon,
       'category': instance.category,
     };
 
@@ -95,4 +97,13 @@ Map<String, dynamic> _$CategoryResponseToJson(CategoryResponse instance) =>
     <String, dynamic>{
       'id': instance.id,
       'title': instance.title,
+    };
+
+IconResponse _$IconResponseFromJson(Map<String, dynamic> json) => IconResponse(
+      icon_id: json['icon_id'] as int?,
+    );
+
+Map<String, dynamic> _$IconResponseToJson(IconResponse instance) =>
+    <String, dynamic>{
+      'icon_id': instance.icon_id,
     };

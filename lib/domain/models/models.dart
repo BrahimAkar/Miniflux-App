@@ -25,12 +25,20 @@ class CategoryModel {
   });
 }
 
+class IconModel {
+  int iconID;
+
+  IconModel({required this.iconID});
+}
+
 class FeedModel {
   int id;
   String title;
+  IconModel icon;
   FeedModel({
     required this.id,
     required this.title,
+    required this.icon,
   });
 }
 
@@ -45,6 +53,7 @@ class EntryModel {
   String author;
   bool starred;
   int readingTime;
+  FeedModel feed;
   EntryModel({
     required this.id,
     required this.status,
@@ -56,6 +65,7 @@ class EntryModel {
     required this.author,
     required this.starred,
     required this.readingTime,
+    required this.feed,
   });
 }
 

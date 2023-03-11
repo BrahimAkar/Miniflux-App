@@ -28,9 +28,9 @@ extension CategoryResponseMapper on CategoryResponse {
 extension FeedResponseMapper on FeedResponse {
   FeedModel toDomain() {
     return FeedModel(
-      id: id ?? ConstsNumbers.zero,
-      title: title ?? ConstStrings.emptyString,
-    );
+        id: id ?? ConstsNumbers.zero,
+        title: title ?? ConstStrings.emptyString,
+        icon: icon.toDomain());
   }
 }
 
@@ -47,6 +47,12 @@ extension EntryResponseMapper on EntryResponse {
       author: author ?? ConstStrings.emptyString,
       starred: starred ?? false,
       readingTime: readingTime ?? ConstsNumbers.zero,
+      feed: feed?.toDomain() ??
+          FeedModel(
+            id: ConstsNumbers.zero,
+            title: ConstStrings.emptyString,
+            icon: IconModel(iconID: ConstsNumbers.zero),
+          ),
     );
   }
 }
@@ -57,5 +63,11 @@ extension EntriesResponseMapper on EntriesResponse {
       entries: entries?.map((e) => e.toDomain()).toList() ?? [],
       total: total ?? ConstsNumbers.zero,
     );
+  }
+}
+
+extension IconResponseMapper on IconResponse {
+  IconModel toDomain() {
+    return IconModel(iconID: icon_id ?? ConstsNumbers.zero);
   }
 }

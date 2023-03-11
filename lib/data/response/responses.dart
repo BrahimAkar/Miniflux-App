@@ -99,12 +99,15 @@ class FeedResponse {
   int? id;
   @JsonKey(name: 'title')
   String? title;
+  @JsonKey(name: 'icon')
+  IconResponse icon;
 
   CategoryResponse? category;
   FeedResponse({
     this.id,
     this.title,
     this.category,
+    required this.icon,
   });
   // from json
   factory FeedResponse.fromJson(Map<String, dynamic> json) =>
@@ -130,4 +133,20 @@ class CategoryResponse {
 
 // to json
   Map<String, dynamic> toJson() => _$CategoryResponseToJson(this);
+}
+
+@JsonSerializable()
+class IconResponse {
+  @JsonKey(name: 'icon_id')
+  int? icon_id;
+
+  IconResponse({
+    this.icon_id,
+  });
+  // from json
+  factory IconResponse.fromJson(Map<String, dynamic> json) =>
+      _$IconResponseFromJson(json);
+
+// to json
+  Map<String, dynamic> toJson() => _$IconResponseToJson(this);
 }
