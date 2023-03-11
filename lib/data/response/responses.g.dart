@@ -100,7 +100,7 @@ Map<String, dynamic> _$CategoryResponseToJson(CategoryResponse instance) =>
     };
 
 IconResponse _$IconResponseFromJson(Map<String, dynamic> json) => IconResponse(
-      icon_id: json['icon_id'] as int?,
+      icon_id: json['icon_id'] as int,
     );
 
 Map<String, dynamic> _$IconResponseToJson(IconResponse instance) =>
