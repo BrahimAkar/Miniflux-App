@@ -15,3 +15,55 @@ class MeModel {
     required this.showReadingTime,
   });
 }
+
+class Category {
+  int id;
+  String title;
+  Category({
+    required this.id,
+    required this.title,
+  });
+}
+
+class Feed {
+  int id;
+  String title;
+  Feed({
+    required this.id,
+    required this.title,
+  });
+}
+
+class Entry {
+  String id;
+  String status;
+  String title;
+  String url;
+  String publishedAt;
+  String createdAt;
+  String content;
+  String author;
+  bool starred;
+  int readingTime;
+  Entry({
+    required this.id,
+    required this.status,
+    required this.title,
+    required this.url,
+    required this.publishedAt,
+    required this.createdAt,
+    required this.content,
+    required this.author,
+    required this.starred,
+    required this.readingTime,
+  });
+}
+
+class EntriesFeed {
+  int total;
+  List<Entry> entries;
+  EntriesFeed({
+    required this.total,
+    required this.entries,
+  });
+}

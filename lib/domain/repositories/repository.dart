@@ -4,4 +4,5 @@ import 'package:miniflux_app/domain/models/models.dart';
 
 abstract class Repository {
   Future<Either<Failure, MeModel>> aboutMe();
+  Future<Either<Failure, EntriesFeed>> entriesFeed();
 }
