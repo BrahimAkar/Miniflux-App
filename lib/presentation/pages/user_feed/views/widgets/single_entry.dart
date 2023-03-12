@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 // ignore: depend_on_referenced_packages
 import 'package:google_fonts/google_fonts.dart';
+import 'package:miniflux_app/app/router/app_router.dart';
 
 import 'package:miniflux_app/domain/models/models.dart';
 import 'package:miniflux_app/presentation/extensions/extensions.dart';
@@ -19,6 +20,9 @@ class SingleEntry extends StatelessWidget {
     return Column(
       children: [
         ListTile(
+          onTap: () {
+            appRouter.push(ArticlePageRoute(entryModel: entry));
+          },
           title: Text(
             entry.title,
             style: GoogleFonts.poppins(

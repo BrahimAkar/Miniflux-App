@@ -29,6 +29,16 @@ class _$AppRouter extends RootStackRouter {
         child: const MainHomePage(),
       );
     },
+    ArticlePageRoute.name: (routeData) {
+      final args = routeData.argsAs<ArticlePageRouteArgs>();
+      return AdaptivePage<dynamic>(
+        routeData: routeData,
+        child: ArticlePage(
+          key: args.key,
+          entryModel: args.entryModel,
+        ),
+      );
+    },
   };
 
   @override
@@ -40,6 +50,10 @@ class _$AppRouter extends RootStackRouter {
         RouteConfig(
           MainHomePageRoute.name,
           path: '/',
+        ),
+        RouteConfig(
+          ArticlePageRoute.name,
+          path: '/article-page',
         ),
       ];
 }
@@ -66,4 +80,38 @@ class MainHomePageRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'MainHomePageRoute';
+}
+
+/// generated route for
+/// [ArticlePage]
+class ArticlePageRoute extends PageRouteInfo<ArticlePageRouteArgs> {
+  ArticlePageRoute({
+    Key? key,
+    required EntryModel entryModel,
+  }) : super(
+          ArticlePageRoute.name,
+          path: '/article-page',
+          args: ArticlePageRouteArgs(
+            key: key,
+            entryModel: entryModel,
+          ),
+        );
+
+  static const String name = 'ArticlePageRoute';
+}
+
+class ArticlePageRouteArgs {
+  const ArticlePageRouteArgs({
+    this.key,
+    required this.entryModel,
+  });
+
+  final Key? key;
+
+  final EntryModel entryModel;
+
+  @override
+  String toString() {
+    return 'ArticlePageRouteArgs{key: $key, entryModel: $entryModel}';
+  }
 }
