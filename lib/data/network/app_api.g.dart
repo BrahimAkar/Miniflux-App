@@ -57,7 +57,7 @@ class _AppServiceClient implements AppServiceClient {
     )
             .compose(
               _dio.options,
-              '/entries?direction=desc&status=unread',
+              '/entries?direction=desc&limit=10',
               queryParameters: queryParameters,
               data: _data,
             )
