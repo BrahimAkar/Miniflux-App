@@ -1,5 +1,4 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 // ignore: depend_on_referenced_packages
 import 'package:google_fonts/google_fonts.dart';
@@ -22,28 +21,12 @@ class SingleEntry extends StatelessWidget {
             entry.title,
             style: GoogleFonts.poppins(
               fontSize: 17,
-              fontWeight: FontWeight.bold,
+              fontWeight: FontWeight.w600,
               height: 1.5,
+              color: Colors.white70,
             ),
           ),
-          leading: Container(
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: Colors.grey[300]!,
-                width: 0.5,
-              ),
-              borderRadius: BorderRadius.circular(5),
-            ),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(5),
-              child: CachedNetworkImage(
-                imageUrl: getFeedIconFromArticleURL(entry.url),
-                width: 30,
-                height: 30,
-                fit: BoxFit.fill,
-              ),
-            ),
-          ),
+          // leading:
           // if article is not read, show a dot
           trailing: entry.status == 'unread'
               ? Container(
@@ -59,6 +42,25 @@ class SingleEntry extends StatelessWidget {
             margin: const EdgeInsets.only(top: 8),
             child: Wrap(
               children: [
+                Container(
+                  decoration: BoxDecoration(
+                    // border: Border.all(
+                    //   color: Colors.grey[300]!,
+                    //   width: 0.5,
+                    // ),
+                    borderRadius: BorderRadius.circular(1),
+                  ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(1),
+                    child: CachedNetworkImage(
+                      imageUrl: getFeedIconFromArticleURL(entry.url),
+                      width: 15,
+                      height: 15,
+                      fit: BoxFit.fill,
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 8),
                 Text(
                   entry.feed.title,
                   style: Theme.of(context).textTheme.labelSmall,
@@ -71,7 +73,10 @@ class SingleEntry extends StatelessWidget {
                 ),
                 Text(
                   ''.getAdaptedMomentLanguage(entry.publishedAt),
-                  style: Theme.of(context).textTheme.labelSmall,
+                  style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                        // color: Colors.grey[400],
+                        fontFamily: GoogleFonts.poppins().fontFamily,
+                      ),
                 ),
                 // Favorite Icon
                 const SizedBox(width: 8),
@@ -79,28 +84,28 @@ class SingleEntry extends StatelessWidget {
             ),
           ),
         ),
-        Container(
-          margin: const EdgeInsets.only(top: 8),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(
-                width: MediaQuery.of(context).size.width,
-                // color: Colors.red,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  mainAxisSize: MainAxisSize.max,
-                  children: const [
-                    Icon(
-                      FluentIcons.bookmark_20_regular,
-                      size: 20,
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
+        // Container(
+        //   margin: const EdgeInsets.only(top: 8),
+        //   child: Column(
+        //     crossAxisAlignment: CrossAxisAlignment.start,
+        //     children: [
+        //       SizedBox(
+        //         width: MediaQuery.of(context).size.width,
+        //         // color: Colors.red,
+        //         child: Row(
+        //           mainAxisAlignment: MainAxisAlignment.end,
+        //           mainAxisSize: MainAxisSize.max,
+        //           children: const [
+        //             Icon(
+        //               FluentIcons.bookmark_20_regular,
+        //               size: 20,
+        //             ),
+        //           ],
+        //         ),
+        //       ),
+        //     ],
+        //   ),
+        // ),
       ],
     );
   }
