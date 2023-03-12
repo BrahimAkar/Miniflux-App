@@ -29,7 +29,7 @@ class ArticlePage extends StatelessWidget {
               ),
               const SizedBox(height: 16),
               HtmlWidget(
-                // most of rss feeds have the first image as the cover image, and the second image is the actual content, so we remove the second image from the content to avoid rendering it twice in the article page (once as the cover image, and once as the actual content)
+                // most of rss feeds have the first image as the content image, and the second image as the cover image, so we want to remove the second image because of its bad quality
                 removeSecondImage(entryModel.content),
 
                 // ignore: non_constant_identifier_names, avoid_types_as_parameter_names
