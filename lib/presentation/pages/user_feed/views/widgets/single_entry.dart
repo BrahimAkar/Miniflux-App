@@ -5,7 +5,9 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'package:miniflux_app/domain/models/models.dart';
 import 'package:miniflux_app/presentation/extensions/extensions.dart';
+import 'package:miniflux_app/utils/constants/strings.dart';
 import 'package:miniflux_app/utils/functions/get_feed_icon.dart';
+import 'package:miniflux_app/utils/functions/get_img_from_html.dart';
 
 class SingleEntry extends StatelessWidget {
   const SingleEntry({super.key, required this.entry, required this.index});
@@ -28,16 +30,22 @@ class SingleEntry extends StatelessWidget {
           ),
           // leading:
           // if article is not read, show a dot
-          trailing: entry.status == 'unread'
-              ? Container(
-                  width: 5,
-                  height: 5,
-                  decoration: const BoxDecoration(
-                    color: Colors.green,
-                    shape: BoxShape.circle,
-                  ),
-                )
-              : null,
+          // trailing: entry.status == 'unread'
+          //     ? Container(
+          //         width: 5,
+          //         height: 5,
+          //         decoration: const BoxDecoration(
+          //           color: Colors.green,
+          //           shape: BoxShape.circle,
+          //         ),
+          //       )
+          //     : null,
+          trailing: CachedNetworkImage(
+            imageUrl: extractImageUrl(entry.content),
+            width: 100,
+            height: 100,
+            fit: BoxFit.cover,
+          ),
           subtitle: Container(
             margin: const EdgeInsets.only(top: 8),
             child: Wrap(
@@ -57,6 +65,9 @@ class SingleEntry extends StatelessWidget {
                       width: 15,
                       height: 15,
                       fit: BoxFit.fill,
+                      errorWidget: (context, url, error) => Image.network(
+                        ConstStrings.defaultNetworkImageFeed,
+                      ),
                     ),
                   ),
                 ),
