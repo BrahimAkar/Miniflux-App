@@ -1,0 +1,94 @@
+name: Build And Test App [ Android & IOS ]
+
+on:
+  push:
+    branches: [master]
+
+# Global environment variables
+env:
+  GITHUB_TOKEN: ${{ secrets.MINIFLUX_KEY }}
+
+jobs:
+  build_and_test:
+    name: Build and test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Install Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: "stable"
+      - name: Get dependencies
+        run: flutter pub get
+      - name: Analyze code
+        run: flutter analyze --no-pub --fatal-warnings
+      - name: Run tests
+        run: flutter test --coverage
+      - name: Upload coverage
+        uses: codecov/codecov-action@v2
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+
+  lint:
+    name: Lint code
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Install Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: "stable"
+      - name: Get dependencies
+        run: flutter pub get
+      - name: Lint code
+        run: flutter analyze --no-pub
+
+  build_android:
+    name: Build Android app
+    runs-on: ubuntu-latest
+    needs: [build_and_test]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Install Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: "stable"
+      - name: Build Android app
+        run: flutter build apk --release
+
+  build_ios:
+    name: Build iOS app
+    runs-on: macos-latest
+    needs: [build_and_test]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Install Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: "stable"
+      - name: Build iOS app
+        run: flutter build ios --release --no-codesign
+  create_an_android_github_release:
+    name: Create an Android GitHub release
+    runs-on: ubuntu-latest
+    needs: [build_android]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Install Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: "stable"
+      - name: Create an Android GitHub release
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "build/app/outputs/flutter-apk/app-release.apk"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          name: "Android release"
+          body: "This is an Android release"
+          draft: false
+          prerelease: false

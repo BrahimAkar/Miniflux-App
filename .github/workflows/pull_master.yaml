@@ -1,11 +1,8 @@
 name: Build And Test App [ Android & IOS ]
 
 on:
-  push:
-    branches: [master]
   pull_request:
     branches: [master]
-
 # Global environment variables
 env:
   GITHUB_TOKEN: ${{ secrets.MINIFLUX_KEY }}
